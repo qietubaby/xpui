@@ -22,7 +22,13 @@
   </div>
 </template>
 <script>
-import contract from '@/components/contract/contract.vue'
+import Vue from 'vue'
+
+import plugin from './plugin'
+
+Vue.use(plugin)
+
+import contract from '../../../src/components/contract/contract.vue'
 
 export default {
   name: 'contractDemo',
@@ -66,7 +72,7 @@ export default {
   color: rgba(0, 0, 0, 0.65);
   margin: 20px 0 40px;
   input {
-    margin-right: 5px;
+    margin-top: 5px;
   }
   span {
     color: #2c68ff;

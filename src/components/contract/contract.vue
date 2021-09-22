@@ -48,13 +48,12 @@
         </div>
         <div :class="baseClass + '__foot'">
           <slot name="btns">
-            <go-button
+            <gButton
               :class="baseClass + '__foot--btn'"
-              size="medium"
               :disabled="isDisabled"
               :loading="loading"
               @click="confirm"
-              >{{ timeNum ? `(${timeNum})` : '' }}{{ btnTextInside }}</go-button
+              >{{ timeNum ? `(${timeNum})` : '' }}{{ btnTextInside }}</gButton
             >
           </slot>
         </div>
@@ -64,8 +63,12 @@
 </template>
 
 <script>
+import Button from '../button/button.vue'
 export default {
-  name: 'ui-contract-dialog',
+  name: 'contract',
+  components: {
+    gButton: Button,
+  },
   props: {
     show: Boolean,
     title: {
@@ -255,6 +258,7 @@ $shallow-color: #fff;
     width: 240px;
     padding: 0 20px 0 24px;
     &-list {
+      list-style: none;
       font-size: 14px;
       color: rgba(0, 0, 0, 0.65);
       li {

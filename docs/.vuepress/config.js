@@ -7,7 +7,7 @@ module.exports = {
       {
         title: '业务组件',
         collapsable: false,
-        children: ['/components/smsCode'],
+        children: ['/components/smsCode', '/components/contract'],
       },
       {
         title: '组件',
