@@ -20,6 +20,9 @@
           <router-link to="/contract">Contract 合同弹窗</router-link>
         </li>
         <li>
+          <router-link to="/stickybar">StickyBar 固钉条</router-link>
+        </li>
+        <li>
           <router-link to="/icon">Icon 图标</router-link>
         </li>
         <li>

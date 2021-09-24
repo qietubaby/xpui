@@ -45,8 +45,10 @@ import UserCenter from '../views/UserCenter.vue'
 
 import SlideDemo from '../views/SlideDemo.vue'
 
+// 业务组件
 import SmsCodeDemo from '../views/SmsCodeDemo.vue'
 import ContractDemo from '../views/ContractDemo.vue'
+import stickyBarDemo from '../views/stickyBarDemo.vue'
 // import navdemo from './views/navdemo.vue'
 // import griddemo from './views/griddemo.vue'
 //  import uploaderTest from './views/uploaderTest.vue'
@@ -172,6 +174,11 @@ export default new Router({
       path: '/contract',
       name: 'ContractDemo',
       component: ContractDemo,
+    },
+    {
+      path: '/stickybar',
+      name: 'stickyBarDemo',
+      component: stickyBarDemo,
     },
   ],
 })

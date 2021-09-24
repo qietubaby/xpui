@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'UED分享',
+  title: 'VueDown',
   description: '一个用来学习的UI框架',
   themeConfig: {
     sidebar: [
@@ -7,10 +7,16 @@ module.exports = {
       {
         title: '业务组件',
         collapsable: false,
-        children: ['/components/smsCode', '/components/contract'],
+        children: [
+          '/components/smsCode',
+          '/components/contract',
+          '/components/stickyBar',
+          '/components/infoDisplay',
+          '/components/selectType',
+        ],
       },
       {
-        title: '组件',
+        title: '基础组件',
         collapsable: false,
         children: [
           '/components/icon',

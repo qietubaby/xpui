@@ -11,7 +11,7 @@ export default {
     }
   },
   components: {
-    uiButton: Button,
+    gButton: Button,
   },
   computed: {
     key() {
@@ -53,22 +53,13 @@ export default {
     },
   },
   props: {
-    type: String,
     initText: {
       type: String,
       default: '获取验证码',
     },
-    size: {
-      type: String,
-      default: 'medium',
-    },
-    reInit: {
-      type: Boolean,
-      default: false,
-    },
     tag: {
       type: String,
-      default: 'ui-button',
+      default: 'g-button',
     },
     count: {
       type: Number,

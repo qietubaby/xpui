@@ -1,13 +1,6 @@
 <template>
-  <div
-    class="gulu-sticky-wrapper"
-    ref="wrapper"
-  >
-    <div
-      class="gulu-sticky"
-      ref="wrapper"
-      :class="classes"
-    >
+  <div class="gulu-sticky-wrapper" ref="wrapper">
+    <div class="gulu-sticky" ref="wrapper" :class="classes">
       <slot></slot>
     </div>
   </div>
@@ -17,19 +10,16 @@ export default {
   name: 'Sticky',
   data() {
     return {
-      sticky: false
+      sticky: false,
     }
   },
   mounted() {
     let { top } = this.top()
 
     window.addEventListener('scroll', () => {
-
-
       if (window.scrollY > top) {
         console.log('滚过了元素顶部')
         let { height } = this.height()
-
 
         this.$refs.wrapper.style.height = `${height}px`
         this.sticky = true
@@ -39,15 +29,13 @@ export default {
       }
     })
   },
-  created() {
-
-  },
+  created() {},
   computed: {
     classes() {
       return {
-        sticky: this.sticky
+        sticky: this.sticky,
       }
-    }
+    },
   },
   methods: {
     top() {
@@ -57,8 +45,8 @@ export default {
     height() {
       let { height } = this.$refs.wrapper.getBoundingClientRect()
       return { height }
-    }
-  }
+    },
+  },
 }
 </script>
 <style scoped lang="scss">
@@ -72,5 +60,3 @@ export default {
   }
 }
 </style>
-
-

@@ -8,11 +8,6 @@
       <g-input></g-input>
       <sms-code @click="sendCodeAjax" style="margin-left: 10px;"></sms-code>
     </div>
-    <pre>
-    <code>
-      {{ content }}
-    </code>
-  </pre>
   </div>
 </template>
 
@@ -30,18 +25,7 @@ export default {
     smsCode,
   },
   data() {
-    return {
-      content: `<sms-code @click="sendCodeAjax" style="margin-left: 10px;"></sms-code>
-      methods: {
-        sendCodeAjax(callback) {
-          setTimeout(() => {
-            this.$toast('验证码已发送您的手机，请注意查收')
-            callback()
-          }, 300)
-        },
-      }
-      `,
-    }
+    return {}
   },
   methods: {
     sendCodeAjax(callback) {
@@ -55,7 +39,7 @@ export default {
 </script>
 <style scoped lang="scss">
 .tel {
-  margin-bottom: 16px;
+  margin: 16px 0;
   .label {
     color: rgba(0, 0, 0, 0.65);
   }
