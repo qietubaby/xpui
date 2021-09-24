@@ -46,13 +46,6 @@ Vue.component('g-popover', Popover)
 // Vue.component('g-cascader-item', CascaderItem)
 Vue.config.productionTip = false
 
-//轮播图组件
-import Slides from '@/components/slides/slides.vue'
-import slidesItem from '@/components/slides/slides-item.vue'
-
-Vue.component('g-slides', Slides)
-Vue.component('g-slides-item', slidesItem)
-
 // 自定义指令。指令是专门用来封装dom操作的
 // binding.value 就是绑定的回调函数
 /*

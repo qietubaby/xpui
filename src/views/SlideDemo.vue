@@ -1,7 +1,12 @@
 <template>
   <div>
     <div class="box">
-      <g-slides class="wrapper" :selected.sync="selected">
+      <g-slides
+        class="wrapper"
+        :selected.sync="selected"
+        direction="y"
+        :showNav="false"
+      >
         <g-slides-item name="0">
           <div class="slidebox">1</div>
         </g-slides-item>
@@ -19,7 +24,13 @@
   </div>
 </template>
 <script>
+import Slides from '@/components/slides/slides.vue'
+import SlidesItem from '@/components/slides/slides-item.vue'
 export default {
+  components: {
+    gSlides: Slides,
+    gSlidesItem: SlidesItem,
+  },
   data() {
     return {
       // slides数据

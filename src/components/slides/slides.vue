@@ -10,7 +10,7 @@
       <div class="g-slides-wrapper">
         <slot></slot>
       </div>
-      <ul class="g-slides-dots">
+      <ul class="g-slides-dots" v-if="showNav">
         <li
           :key="n"
           v-for="n in childrenLength"
@@ -30,6 +30,14 @@ export default {
       type: String,
     },
     autoPlay: {
+      type: Boolean,
+      default: true,
+    },
+    direction: {
+      type: String,
+      default: 'x',
+    },
+    showNav: {
       type: Boolean,
       default: true,
     },
