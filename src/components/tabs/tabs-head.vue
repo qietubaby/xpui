@@ -1,15 +1,11 @@
 <template>
   <div class="tabs-head">
     <slot></slot>
-    <div
-      class="line"
-      ref="line"
-    ></div>
+    <div class="line" ref="line"></div>
 
     <div class="setting-wrapper">
       <slot name="actions"></slot>
     </div>
-
   </div>
 </template>
 <script>
@@ -23,7 +19,7 @@ export default {
       this.$refs.line.style.width = `${width}px`
       this.$refs.line.style.transform = `translateX(${left - parentLeft}px)`
     })
-  }
+  },
 }
 </script>
 <style lang="scss">

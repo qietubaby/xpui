@@ -10,6 +10,7 @@
       <div class="g-slides-wrapper">
         <slot></slot>
       </div>
+
       <ul class="g-slides-dots" v-if="showNav">
         <li
           :key="n"
@@ -123,8 +124,10 @@ export default {
       if (this.timerId) {
         return
       }
+
       let run = () => {
         let index = this.names.indexOf(this.getSelected())
+
         let newIndex = index + 1
 
         //this.$emit('update:selected',this.names[newIndex])

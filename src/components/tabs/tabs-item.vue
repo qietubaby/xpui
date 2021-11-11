@@ -5,24 +5,24 @@
 </template>
 <script>
 export default {
-  name:'GuluTabsItem',
+  name: 'GuluTabsItem',
   inject: ['eventBus'],
-  data(){
+  data() {
     return {
-      active: false
+      active: false,
     }
   },
-  computed:{
-    classes(){
+  computed: {
+    classes() {
       return {
         active: this.active,
-        disabled: this.disabled
+        disabled: this.disabled,
       }
-    }
+    },
   },
   created() {
     // on是监听  emit是触发
-    this.eventBus.$on('update:selected',(name) => {
+    this.eventBus.$on('update:selected', name => {
       // if(name === this.name) {
       //   console.log(`${this.name}被选中了`)
       //   this.active = true
@@ -32,49 +32,47 @@ export default {
       // }
       // 优化后
       this.active = name === this.name
-
-     
     })
   },
 
   props: {
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     name: {
-      type:String || Number,
-      required: true
-    }
+      type: String || Number,
+      required: true,
+    },
   },
-  methods:{
+  methods: {
     onClick() {
-      if(this.disabled){
+      if (this.disabled) {
         return
       }
       // 传递childvm的作用在于 在 tabs-head中需要使用childvm的位置
       this.eventBus.$emit('update:selected', this.name, this)
-    }
-  }
+    },
+  },
 }
 </script>
 <style lang="scss">
-  $blue:#1890ff;
-  $disabled-text-colr: #dbdbdb;
-  .tabs-item {
-    flex-shrink: 0;
-    padding: 0 1em;
-    cursor: pointer;
-    height: 100%;
-    display: flex;
-    align-items: center;
+$blue: #1890ff;
+$disabled-text-colr: #dbdbdb;
+.tabs-item {
+  flex-shrink: 0;
+  padding: 0 1em;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  align-items: center;
 
-    &.active {
-      color:$blue;
-      font-weight: bold;
-    }
-    &.disabled {
-      color: $disabled-text-colr;
-    }
+  &.active {
+    color: $blue;
+    font-weight: bold;
   }
+  &.disabled {
+    color: $disabled-text-colr;
+  }
+}
 </style>

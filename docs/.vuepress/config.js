@@ -13,6 +13,7 @@ module.exports = {
           '/components/stickyBar',
           '/components/infoDisplay',
           '/components/selectType',
+          '/components/noticeBar',
         ],
       },
       {
@@ -24,6 +25,8 @@ module.exports = {
           '/components/popover',
           '/components/slide',
           '/components/toast',
+          '/components/tab',
+          '/components/collapse',
         ],
       },
     ],

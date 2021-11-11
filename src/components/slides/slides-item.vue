@@ -33,9 +33,6 @@ export default {
       }
     },
   },
-  mounted() {
-    console.log(this.$parent.direction)
-  },
 }
 </script>
 <style lang="scss" scoped>
@@ -47,7 +44,6 @@ export default {
   position: absolute;
   left: 0;
   top: 0;
-  background: red !important;
 }
 .slide-enter-active,
 .slide-leave-active,

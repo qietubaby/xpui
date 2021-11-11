@@ -8,16 +8,22 @@
       <g-input></g-input>
       <sms-code @click="sendCodeAjax" style="margin-left: 10px;"></sms-code>
     </div>
+    <g-tag type="">消息</g-tag>
+    <g-tag type="success">成功</g-tag>
+    <g-tag type="warning">警告</g-tag>
+    <g-tag type="danger">失败</g-tag>
   </div>
 </template>
 <script>
 import Input from '@/components/input/input.vue'
 import smsCode from '@/components/smsCode/smsCode'
+import Tag from '@/components/tag/tag'
 export default {
   name: 'smsCodeDemo',
   components: {
     smsCode,
     gInput: Input,
+    gTag: Tag,
   },
   methods: {
     sendCodeAjax(callback) {
