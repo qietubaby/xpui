@@ -2,20 +2,28 @@
   <div>
     <ul class="icon-list">
       <li>
-        <g-icon name="download"></g-icon>
+        <component :is="dynamicComponent" name="download"></component>
         <span class="icon-name">download</span>
       </li>
       <li>
-        <g-icon name="thumbs-up"></g-icon
+        <component :is="dynamicComponent" name="thumbs-up"></component
         ><span class="icon-name">thumbs-up</span>
       </li>
-      <li><g-icon name="left"></g-icon><span class="icon-name">left</span></li>
       <li>
-        <g-icon name="settings"></g-icon><span class="icon-name">settings</span>
+        <component :is="dynamicComponent" name="left"></component
+        ><span class="icon-name">left</span>
       </li>
-      <li><g-icon name="down"></g-icon><span class="icon-name">down</span></li>
+      <li>
+        <component :is="dynamicComponent" name="settings"></component
+        ><span class="icon-name">settings</span>
+      </li>
+      <li>
+        <component :is="dynamicComponent" name="down"></component
+        ><span class="icon-name">down</span>
+      </li>
       <li style="border-right:none;">
-        <g-icon name="loading"></g-icon><span class="icon-name">down</span>
+        <component :is="dynamicComponent" name="loading"></component
+        ><span class="icon-name">down</span>
       </li>
     </ul>
     <pre>
@@ -26,16 +34,18 @@
   </div>
 </template>
 <script>
-import Icon from '../../../src/components/icon/icon'
 export default {
   data() {
     return {
+      dynamicComponent: null,
       content: `<g-icon name="download"></g-icon>
       <g-icon name="loading"></g-icon>`,
     }
   },
-  components: {
-    gIcon: Icon,
+  mounted() {
+    import('../../../src/components/icon/icon').then(module => {
+      this.dynamicComponent = module.default
+    })
   },
 }
 </script>

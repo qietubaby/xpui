@@ -1,7 +1,7 @@
 <template>
   <div>
-    <g-button>按钮组件</g-button>
-    <g-button :loading="true">按钮组件</g-button>
+    <component :is="dynamicComponent">按钮组件</component>
+    <component :is="dynamicComponent" :loading="true">按钮组件</component>
     <pre>
     <code>
       {{ content }}
@@ -10,16 +10,18 @@
   </div>
 </template>
 <script>
-import Button from "../../../src/components/button/button";
 export default {
   data() {
     return {
+      dynamicComponent: null,
       content: `<g-button>按钮组件</g-button>
     <g-button :loading="true">按钮组件</g-button>`,
-    };
+    }
   },
-  components: {
-    gButton: Button,
+  mounted() {
+    import('../../../src/components/button/button').then(module => {
+      this.dynamicComponent = module.default
+    })
   },
-};
+}
 </script>
