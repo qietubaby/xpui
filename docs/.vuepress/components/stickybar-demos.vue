@@ -9,7 +9,8 @@
       footer元素<br />
       固钉条默认总是悬浮此在元素之上
     </div>
-    <sticky-bar
+    <component
+      :is="dynamicComponent"
       class="select-footer"
       :distance="dis"
       :stickyElement="stickyElement"
@@ -38,7 +39,7 @@
           </div>
         </div>
       </div>
-    </sticky-bar>
+    </component>
   </div>
 </template>
 <script>
@@ -51,6 +52,7 @@ export default {
   },
   data() {
     return {
+      dynamicComponent: null,
       dis: 0,
       stickyElement: 'c-footer',
     }
@@ -63,6 +65,11 @@ export default {
     handle() {
       this.stickyElement = 'c-footer'
     },
+  },
+  mounted() {
+    import('../../../src/components/stickyBar/stickyBar').then(module => {
+      this.dynamicComponent = module.default
+    })
   },
 }
 </script>
