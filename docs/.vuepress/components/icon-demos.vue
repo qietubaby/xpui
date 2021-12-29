@@ -2,27 +2,51 @@
   <div>
     <ul class="icon-list">
       <li>
-        <component :is="dynamicComponent" name="download"></component>
+        <component
+          v-if="dynamicComponent"
+          :is="dynamicComponent"
+          name="download"
+        ></component>
         <span class="icon-name">download</span>
       </li>
       <li>
-        <component :is="dynamicComponent" name="thumbs-up"></component
+        <component
+          v-if="dynamicComponent"
+          :is="dynamicComponent"
+          name="thumbs-up"
+        ></component
         ><span class="icon-name">thumbs-up</span>
       </li>
       <li>
-        <component :is="dynamicComponent" name="left"></component
+        <component
+          v-if="dynamicComponent"
+          :is="dynamicComponent"
+          name="left"
+        ></component
         ><span class="icon-name">left</span>
       </li>
       <li>
-        <component :is="dynamicComponent" name="settings"></component
+        <component
+          v-if="dynamicComponent"
+          :is="dynamicComponent"
+          name="settings"
+        ></component
         ><span class="icon-name">settings</span>
       </li>
       <li>
-        <component :is="dynamicComponent" name="down"></component
+        <component
+          v-if="dynamicComponent"
+          :is="dynamicComponent"
+          name="down"
+        ></component
         ><span class="icon-name">down</span>
       </li>
       <li style="border-right:none;">
-        <component :is="dynamicComponent" name="loading"></component
+        <component
+          v-if="dynamicComponent"
+          :is="dynamicComponent"
+          name="loading"
+        ></component
         ><span class="icon-name">down</span>
       </li>
     </ul>

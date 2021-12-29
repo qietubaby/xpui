@@ -1,9 +1,21 @@
 <template>
   <div>
     <div style="margin-top: 20px;">
-      <g-button @click="changeDis(0)">悬浮至最底部</g-button>
-      <g-button @click="changeDis(300)">悬浮至距离底部300px</g-button>
-      <g-button @click="handle()">固定在footer之上</g-button>
+      <component
+        v-if="buttonComponent"
+        :is="buttonComponent"
+        @click="changeDis(0)"
+        >悬浮至最底部</component
+      >
+      <component
+        v-if="buttonComponent"
+        :is="buttonComponent"
+        @click="changeDis(300)"
+        >悬浮至距离底部300px</component
+      >
+      <component v-if="buttonComponent" :is="buttonComponent" @click="handle()"
+        >固定在footer之上</component
+      >
     </div>
     <div class="c-footer">
       footer元素<br />
@@ -33,9 +45,13 @@
               </div>
             </div>
 
-            <g-button class="select-footer__btn">
+            <component
+              v-if="buttonComponent"
+              :is="buttonComponent"
+              class="select-footer__btn"
+            >
               申请贷款
-            </g-button>
+            </component>
           </div>
         </div>
       </div>
@@ -43,16 +59,11 @@
   </div>
 </template>
 <script>
-import Button from '../../../src/components/button/button.vue'
-import stickyBar from '../../../src/components/stickyBar/stickyBar.vue'
 export default {
-  components: {
-    stickyBar,
-    gButton: Button,
-  },
   data() {
     return {
       dynamicComponent: null,
+      buttonComponent: null,
       dis: 0,
       stickyElement: 'c-footer',
     }
@@ -69,6 +80,9 @@ export default {
   mounted() {
     import('../../../src/components/stickyBar/stickyBar').then(module => {
       this.dynamicComponent = module.default
+    })
+    import('../../../src/components/button/button').then(module => {
+      this.buttonComponent = module.default
     })
   },
 }

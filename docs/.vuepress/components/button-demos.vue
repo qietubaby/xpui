@@ -1,7 +1,11 @@
 <template>
   <div>
-    <component :is="dynamicComponent">按钮组件</component>
-    <component :is="dynamicComponent" :loading="true">按钮组件</component>
+    <component v-if="dynamicComponent" :is="dynamicComponent"
+      >按钮组件</component
+    >
+    <component v-if="dynamicComponent" :is="dynamicComponent" :loading="true"
+      >按钮组件</component
+    >
     <pre>
     <code>
       {{ content }}

@@ -9,7 +9,9 @@
       >
     </div>
 
-    <ui-contract-dialog
+    <component
+      v-if="contract"
+      :is="contract"
       :show.sync="show"
       btnText="全部已阅读并同意协议"
       :timeCount="0"
@@ -18,7 +20,7 @@
       paddingLeftRight="24"
       :loading="contractLoading"
       @confirm="dislogCallback"
-    ></ui-contract-dialog>
+    ></component>
   </div>
 </template>
 <script>
@@ -28,17 +30,15 @@ import plugin from './plugin'
 
 Vue.use(plugin)
 
-import contract from '../../../src/components/contract/contract.vue'
-
 export default {
   name: 'contractDemo',
-  components: {
-    uiContractDialog: contract,
-  },
+
   data() {
     return {
       show: false,
       contractLoading: false,
+      checked: false,
+      contract: null,
       contractPreviewList: [
         {
           previewUrl: 'https://cn.vuejs.org/',
@@ -62,6 +62,12 @@ export default {
         position: 'middle',
       })
     },
+  },
+
+  mounted() {
+    import('../../../src/components/contract/contract').then(module => {
+      this.contract = module.default
+    })
   },
 }
 </script>

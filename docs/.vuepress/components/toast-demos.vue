@@ -1,6 +1,8 @@
 <template>
   <div>
-    <g-button @click="showToast">点我触发toast组件</g-button>
+    <component v-if="buttonComponent" :is="buttonComponent" @click="showToast"
+      >点我触发toast组件</component
+    >
     <pre>
     <code>
       {{ content }}
@@ -16,14 +18,10 @@ import plugin from './plugin'
 
 Vue.use(plugin)
 
-import Button from '../../../src/components/button/button'
-
 export default {
-  components: {
-    gButton: Button,
-  },
   data() {
     return {
+      buttonComponent: null,
       content: `<g-button @click="showToast">点我触发toast组件</g-button>
      
       methods: {
@@ -57,6 +55,11 @@ export default {
         },
       })
     },
+  },
+  mounted() {
+    import('../../../src/components/button/button').then(module => {
+      this.buttonComponent = module.default
+    })
   },
 }
 </script>

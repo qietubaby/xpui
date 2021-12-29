@@ -1,7 +1,11 @@
 <template>
   <div style="margin: 40px 0;width:900px;">
-    <g-button @click="changeColumn">改变列数</g-button>
-    <info-display
+    <component v-if="gButton" :is="gButton" @click="changeColumn"
+      >改变列数</component
+    >
+    <component
+      v-if="infoDisplay"
+      :is="infoDisplay"
       :data="applyInfo.data"
       label-align="left"
       :labels="applyInfo.labels"
@@ -12,15 +16,11 @@
 </template>
 
 <script>
-import infoDisplay from '../../../src/components/infoDisplay/infoDisplay.vue'
-import Button from '../../../src/components/button/button.vue'
 export default {
-  components: {
-    infoDisplay,
-    gButton: Button,
-  },
   data() {
     return {
+      gButton: null,
+      infoDisplay: null,
       columnCount: 2,
       applyInfo: {
         labels: [
@@ -101,6 +101,12 @@ export default {
     },
   },
   mounted() {
+    import('../../../src/components/infoDisplay/infoDisplay').then(module => {
+      this.infoDisplay = module.default
+    })
+    import('../../../src/components/button/button').then(module => {
+      this.gButton = module.default
+    })
     setTimeout(() => {
       const rst = {
         applyInfo: {

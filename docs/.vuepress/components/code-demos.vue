@@ -5,8 +5,13 @@
       <span class="content">152****1076</span>
     </div>
     <div class="smsCode_wrap">
-      <g-input></g-input>
-      <sms-code @click="sendCodeAjax" style="margin-left: 10px;"></sms-code>
+      <component v-if="gInput" :is="gInput"></component>
+      <component
+        v-if="dynamicComponent"
+        :is="dynamicComponent"
+        @click="sendCodeAjax"
+        style="margin-left: 10px;"
+      ></component>
     </div>
   </div>
 </template>
@@ -16,16 +21,12 @@ import Vue from 'vue'
 import plugin from './plugin'
 Vue.use(plugin)
 
-import smsCode from '../../../src/components/smsCode/smsCode'
-import Input from '../../../src/components/input/input.vue'
-
 export default {
-  components: {
-    gInput: Input,
-    smsCode,
-  },
   data() {
-    return {}
+    return {
+      dynamicComponent: null,
+      gInput: null,
+    }
   },
   methods: {
     sendCodeAjax(callback) {
@@ -34,6 +35,14 @@ export default {
         callback()
       }, 300)
     },
+  },
+  mounted() {
+    import('../../../src/components/smsCode/smsCode').then(module => {
+      this.dynamicComponent = module.default
+    })
+    import('../../../src/components/input/input').then(module => {
+      this.gInput = module.default
+    })
   },
 }
 </script>
